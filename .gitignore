@@ -1,0 +1,17 @@
+.DS_Store
+
+# Backend
+backend/.env
+backend/storage/uploads/*
+backend/storage/covers/*
+!backend/storage/uploads/.gitkeep
+!backend/storage/covers/.gitkeep
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/tsconfig.tsbuildinfo
+
+# Logs
+*.log
