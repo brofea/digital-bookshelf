@@ -1,24 +1,71 @@
 # Digital Bookshelf Backend
 
-Gin + GORM + MySQL API for the Digital Bookshelf application.
+## 快速开始
 
-## Quick Start
-
-1. Create a MySQL database:
+1. 创建一个 MySQL 数据库，例如：
 
 ```sql
 CREATE DATABASE digital_bookshelf CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-2. Copy `.env.example` to `.env` or export matching environment variables.
+1. 创建一个数据库用户并授予权限，例如：
 
-3. Install Poppler so uploaded PDFs can render first-page covers:
+```sql
+CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbpass';
+GRANT ALL PRIVILEGES ON digital_bookshelf.* TO 'dbuser'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+1. 复制 `.env.example` 到 `.env` 并修改 `DB_DSN` 以匹配你的数据库连接字符串，例如：
+
+```
+DB_DSN=dbuser:dbpass@tcp(localhost:3306)/digital_bookshelf?charset=utf8mb4&parseTime=True&loc=Local
+```
+
+
+1. 安装 Poppler（用于 PDF 转 PNG）
 
 ```bash
 brew install poppler
 ```
 
-4. Install dependencies and start the API:
+1. 安装依赖并启动：
+
+```bash
+go mod tidy
+go run ./cmd/server
+```
+
+## Quick Start
+
+1. Create a MySQL database, for example:
+
+```sql
+CREATE DATABASE digital_bookshelf CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+1. Create a database user and grant privileges, for example:
+
+```sql
+CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'dbpass';
+GRANT ALL PRIVILEGES ON digital_bookshelf.* TO 'dbuser'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+3. Copy `.env.example` to `.env` and modify DB_DSN to match your database connection string, for example:
+
+```
+DB_DSN=dbuser:dbpass@tcp(localhost:3306)/digital_bookshelf?charset=utf8mb4&parseTime=True&loc=Local
+```
+
+
+4. Install Poppler (for PDF to PNG conversion)
+
+```bash
+brew install poppler
+```
+
+1. Install dependencies and start:
 
 ```bash
 go mod tidy
